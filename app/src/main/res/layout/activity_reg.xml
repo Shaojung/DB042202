@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteX="16dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edPassword"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -50,6 +50,6 @@
         android:layout_marginTop="8dp"
         android:onClick="clickReg"
         android:text="Regist"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/edPassword"
         tools:layout_editor_absoluteX="284dp" />
 </android.support.constraint.ConstraintLayout>

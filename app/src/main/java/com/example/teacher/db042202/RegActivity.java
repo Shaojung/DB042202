@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,7 +21,10 @@ public class RegActivity extends AppCompatActivity {
     }
     public void clickReg(View v)
     {
-        mAuth.createUserWithEmailAndPassword("", "").addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        EditText ed1, ed2;
+        ed1 = (EditText) findViewById(R.id.edEmail);
+        ed2 = (EditText) findViewById(R.id.edPassword);
+        mAuth.createUserWithEmailAndPassword(ed1.getText().toString(), ed2.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
