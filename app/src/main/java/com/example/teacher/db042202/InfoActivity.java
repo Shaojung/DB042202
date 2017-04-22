@@ -1,8 +1,10 @@
 package com.example.teacher.db042202;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,7 +20,8 @@ public class InfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        uid = getIntent().getStringExtra("uid");
+        MyApplication app = (MyApplication) getApplication();
+        uid = app.uid;
         tvNickname = (TextView) findViewById(R.id.tvNickname);
         Log.d("FCM", "uid:" + uid);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -36,5 +39,9 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void clickEdit(View v)
+    {
+        startActivity(new Intent(InfoActivity.this, EditInfoActivity.class).putExtra("uid", uid));
     }
 }

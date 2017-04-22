@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = task.getResult().getUser();
                             String str = user.getUid();
+                            AppInfo.uid = user.getUid();
+                            MyApplication app = (MyApplication) getApplication();
+                            app.uid = user.getUid();
 
                             startActivity(new Intent(MainActivity.this, InfoActivity.class).putExtra("uid", str));
                         }
