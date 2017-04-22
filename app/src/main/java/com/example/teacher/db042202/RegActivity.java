@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +28,14 @@ public class RegActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(ed1.getText().toString(), ed2.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                if (task.isSuccessful())
+                {
+                    RegActivity.this.finish();
+                }
+                else
+                {
+                    Toast.makeText(RegActivity.this, "註冊不成功", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
