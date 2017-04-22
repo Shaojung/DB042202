@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -40,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(MainActivity.this, InfoActivity.class));
+                            FirebaseUser user = task.getResult().getUser();
+                            String str = user.getUid();
+
+                            startActivity(new Intent(MainActivity.this, InfoActivity.class).putExtra("uid", str));
                         }
                         else
                         {
